@@ -9,7 +9,7 @@ int	get_next_line(int const fd, char **line)
 
 	i = 1;
 	if (!(buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1)))
-		return (NULL);
+		return (-1);
 	if (fd >= 0 && line)
 	{
 		while (!ft_strchr(str, '\n') && (ret = read(fd, buf, BUF_SIZE)) > 0)
