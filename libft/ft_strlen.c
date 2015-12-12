@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 17:44:19 by jfortin           #+#    #+#             */
-/*   Updated: 2015/12/12 17:39:32 by jfortin          ###   ########.fr       */
+/*   Created: 2015/11/24 10:25:12 by jfortin           #+#    #+#             */
+/*   Updated: 2015/11/24 10:25:13 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUF_SIZE 1000
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/includes/libft.h"
-
-int	get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
