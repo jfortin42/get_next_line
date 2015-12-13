@@ -15,25 +15,24 @@
 int	get_next_line(int const fd, char **line)
 {
 	int			i;
-	char		*buf;
+	char		buff[BUFF_SIZE + 1];
 	int			ret;
 	static char	*str = "";
 
 	i = 0;
-	if (!(buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1)))
-		return (-1);
-	if (fd >= 0 && line)
+	if (fd >= 0 && line )
 	{
-		while (!ft_strchr(str, '\n') && (ret = read(fd, buf, BUF_SIZE)) > 0)
+		while (!ft_strchr(str, '\n') && (ret = read(fd, buff, BUFF_SIZE)) > 0)
 		{
-			buf[ret] = '\0';
-			str = ft_strjoin(str, buf);
+			buff[ret] = '\0';
+			str = ft_strjoin(str, buff);
 		}
 		while (str[i] != '\n' && str[i])
 			i++;
 		*line = ft_strndup(str, i);
-		str = str + ++i;
-		free(buf);
+		if (str[i] == '\n')
+			i++;
+		str = str + i;
 		if (ret < 0)
 			return (-1);
 		return (ret > 0 ? 1 : 0);
