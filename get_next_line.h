@@ -19,6 +19,12 @@
 # include <unistd.h>
 # include "libft/includes/libft.h"
 
+ typedef struct		s_lst_fd
+{
+	int				fd;
+	char			*str;
+}					t_lst_fd;
+
 int	get_next_line(int const fd, char **line);
 
 #endif
