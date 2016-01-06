@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:16:10 by jfortin           #+#    #+#             */
-/*   Updated: 2015/12/11 17:46:35 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/01/06 17:52:27 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@ int	get_next_line(int const fd, char **line)
 	char		buff[BUFF_SIZE + 1];
 	int			ret;
 	static char	*str = "";
+
+// avancer dans la liste
+//
+//  tant que (le fd n'existe pas dans la liste)
+//  	Avancer;
+//  Creer nouveau maillon(fd);
+//
+//  Lire comme d'habitude;
+//
+//  si (fin du fichier = return (0))
+//  	Suprimer maillon actuel;
 
 	i = 0;
 	if (fd >= 0 && line )

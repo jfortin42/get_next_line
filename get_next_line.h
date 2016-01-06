@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:44:19 by jfortin           #+#    #+#             */
-/*   Updated: 2015/12/12 17:39:32 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/01/06 17:52:31 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@
 # include <unistd.h>
 # include "libft/includes/libft.h"
 
- typedef struct		s_lst_fd
+ typedef struct		s_fd
 {
 	int				fd;
 	char			*str;
+}					t_fd;
+
+ typedef struct		s_lst_fd
+{
+	t_fd			*data;
+	struct s_lst_fd	*next;
 }					t_lst_fd;
 
 int	get_next_line(int const fd, char **line);
