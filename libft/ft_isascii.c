@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 17:44:19 by jfortin           #+#    #+#             */
-/*   Updated: 2016/01/06 17:52:31 by jfortin          ###   ########.fr       */
+/*   Created: 2015/11/24 10:22:05 by jfortin           #+#    #+#             */
+/*   Updated: 2015/11/24 10:22:06 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# define BUFF_SIZE 103
-
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
- typedef struct		s_fd
+int	ft_isascii(int c)
 {
-	int				fd;
-	char			*str;
-}					t_fd;
-
- typedef struct		s_lst_fd
-{
-	t_fd			*data;
-	struct s_lst_fd	*next;
-}					t_lst_fd;
-
-int	get_next_line(int const fd, char **line);
-
-#endif
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}

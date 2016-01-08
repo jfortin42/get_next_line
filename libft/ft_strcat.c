@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 17:44:19 by jfortin           #+#    #+#             */
-/*   Updated: 2016/01/06 17:52:31 by jfortin          ###   ########.fr       */
+/*   Created: 2015/11/24 10:24:07 by jfortin           #+#    #+#             */
+/*   Updated: 2015/11/26 14:42:41 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 103
-
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
- typedef struct		s_fd
+char	*ft_strcat(char *dest, const char *src)
 {
-	int				fd;
-	char			*str;
-}					t_fd;
+	size_t	i;
+	size_t	dest_len;
 
- typedef struct		s_lst_fd
-{
-	t_fd			*data;
-	struct s_lst_fd	*next;
-}					t_lst_fd;
-
-int	get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	dest_len = ft_strlen(dest);
+	while (src[i])
+	{
+		dest[i + dest_len] = src[i];
+		i++;
+	}
+	dest[i + dest_len] = '\0';
+	return (dest);
+}

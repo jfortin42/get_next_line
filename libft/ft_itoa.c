@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 17:44:19 by jfortin           #+#    #+#             */
-/*   Updated: 2016/01/06 17:52:31 by jfortin          ###   ########.fr       */
+/*   Created: 2015/11/24 10:22:29 by jfortin           #+#    #+#             */
+/*   Updated: 2015/11/24 10:22:30 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 103
-
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
- typedef struct		s_fd
+char	*ft_itoa(int n)
 {
-	int				fd;
-	char			*str;
-}					t_fd;
+	char	*s;
 
- typedef struct		s_lst_fd
-{
-	t_fd			*data;
-	struct s_lst_fd	*next;
-}					t_lst_fd;
-
-int	get_next_line(int const fd, char **line);
-
-#endif
+	if (n == -2147483648)
+		return ("-2147483648");
+	s = (char *)malloc(sizeof(char) * 2);
+	if (!s)
+		return (NULL);
+	if (n < 0)
+	{
+		s[0] = '-';
+		s[1] = '\0';
+		s = ft_strjoin(s, ft_itoa(-n));
+	}
+	else if (n >= 10)
+		s = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		s[0] = n + '0';
+		s[1] = '\0';
+	}
+	return (s);
+}

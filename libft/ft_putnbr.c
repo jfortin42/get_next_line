@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 17:44:19 by jfortin           #+#    #+#             */
-/*   Updated: 2016/01/06 17:52:31 by jfortin          ###   ########.fr       */
+/*   Created: 2015/11/24 10:23:50 by jfortin           #+#    #+#             */
+/*   Updated: 2015/11/26 14:41:41 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 103
-
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
- typedef struct		s_fd
+void		ft_putnbr(int n)
 {
-	int				fd;
-	char			*str;
-}					t_fd;
+	int	i;
+	int	j;
+	int	tmp;
+	int	signe;
 
- typedef struct		s_lst_fd
-{
-	t_fd			*data;
-	struct s_lst_fd	*next;
-}					t_lst_fd;
-
-int	get_next_line(int const fd, char **line);
-
-#endif
+	i = 1;
+	signe = 1;
+	if (n < 0)
+		signe = -1;
+	if (n < 0)
+		ft_putchar('-');
+	tmp = n;
+	while (tmp < -9 || tmp > 9)
+	{
+		tmp = tmp / 10;
+		i++;
+	}
+	while (i-- >= 1)
+	{
+		j = 0;
+		tmp = n;
+		while (j++ < i)
+			tmp = tmp / 10;
+		ft_putchar(signe * (tmp % 10) + '0');
+	}
+}
