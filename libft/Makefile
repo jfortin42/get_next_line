@@ -6,7 +6,7 @@
 #    By: jfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 10:29:00 by jfortin           #+#    #+#              #
-#    Updated: 2015/11/24 13:45:11 by jfortin          ###   ########.fr        #
+#    Updated: 2016/01/26 14:26:13 by jfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ $(NAME): $(OBJ)
 				@echo "$(NAME) indexed"
 
 %.o: %.c
-				@gcc $(FLAG) -c $< -o $@
+				@gcc $(FLAG) -I includes -c $< -o $@
 
 clean:
 		@rm -f $(OBJ)

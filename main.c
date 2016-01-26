@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/18 13:05:10 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/18 15:34:17 by mfortin          ###   ########.fr       */
+/*   Created: 2015/12/18 13:05:10 by jfortin           #+#    #+#             */
+/*   Updated: 2016/01/26 16:56:54 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,22 @@ int	main(int ac, char **av)
 {
 	char	*line;
 	int		fd;
+	int		ret;
 
+	ret = 0;
 	(void)ac;
 //	fd = 0;
 	fd = open(av[1], O_RDONLY);
-	while (get_next_line(fd, &line))
-	{
+	//fd1 = open("main.c", O_RDONLY);
+	if ((ret =get_next_line(fd, &line) == 1))
 		printf("%s\n", line);
-	}
+	printf("%d\n", ret);
+	if ((ret =get_next_line(fd, &line) == 1))
+		printf("%s\n", line);
+	printf("%d\n", ret);
+	while(1);
+
+
+	close(fd);
 	return (0);
 }
