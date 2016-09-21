@@ -19,16 +19,15 @@ int	main(int argc, char **argv)
 	char	*line;
 
 	i = 1;
-	while (i < argc)
+	while (i <= argc)
 	{
-		fd = open(argv[i], O_RDONLY);
+		if ((fd = open(argv[i++], O_RDONLY)) < 0 && argc == 1)
+			fd = 0;
 		while (get_next_line(fd, &line) == 1)
 		{
 			ft_putendl(line);
 			free(line);
 		}
-		++i;
 	}
-	while (1);
 	return (0);
 }
